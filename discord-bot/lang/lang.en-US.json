@@ -1,0 +1,145 @@
+{
+  "data": {
+    "displayEmbeds": {
+      "startServer": {
+        "title": "🟡 Starting {{SERVER_NAME}}...",
+        "description": "Please wait while the server starts. It may take up to 10 minutes."
+      },
+      "stopServer": {
+        "title": "🟡 Stopping {{SERVER_NAME}}...",
+        "description": "We will save your progress before stopping the server."
+      },
+      "invalidServerName": {
+        "title": "❌ Invalid server",
+        "description": "{{SERVER_NAME}} does not exist. Please choose the available server."
+      },
+      "emptyServerName": {
+        "title": "❓ No server name",
+        "description": "Please enter the name of the server you want to start."
+      }
+    },
+    "validationEmbeds": {
+      "cooldownHit": {
+        "description": "You can only run this command {{AMOUNT}} time(s) every {{INTERVAL}}. Please wait before attempting this command again.",
+        "color": "{{COM:colors.warning}}"
+      },
+      "devOnly": {
+        "description": "This action can only be done by developers.",
+        "color": "{{COM:colors.warning}}"
+      },
+      "missingClientPerms": {
+        "description": [
+          "I don't have all permissions required to run that command here! Please check the server and channel permissions to make sure I have the following permissions.",
+          "",
+          "Required permissions: {{PERMISSIONS}}"
+        ],
+        "color": "{{COM:colors.warning}}"
+      }
+    },
+    "errorEmbeds": {
+      "command": {
+        "description": "Something went wrong!",
+        "fields": [
+          {
+            "name": "Error code",
+            "value": "{{ERROR_CODE}}"
+          },
+          {
+            "name": "Server ID",
+            "value": "{{GUILD_ID}}"
+          },
+          {
+            "name": "Shard ID",
+            "value": "{{SHARD_ID}}"
+          }
+        ],
+        "color": "{{COM:colors.error}}"
+      },
+      "startupInProcess": {
+        "description": "{{COM:bot.name}} is still starting up. Try again later.",
+        "color": "{{COM:colors.warning}}"
+      },
+      "notImplemented": {
+        "description": "This feature has not been implemented yet!",
+        "color": "{{COM:colors.warning}}"
+      }
+    },
+    "channelRegexes": {
+      "bot": "/bot|command|cmd/i"
+    }
+  },
+  "refs": {
+    "chatCommands": {
+      "startServer": "start",
+      "stopServer": "stop"
+    },
+    "arguments": {
+      "option": "option"
+    },
+    "commandDescs": {
+      "startServer": "Start the palworld server.",
+      "stopServer": "Stop the palworld server."
+    },
+    "argDescs": {
+      "startOption": "Server to start.",
+      "stopOption": "Server to stop."
+    },
+    "fields": {
+      "commands": "Commands"
+    },
+    "permissions": {
+      "AddReactions": "Add Reactions",
+      "Administrator": "Administrator",
+      "AttachFiles": "Attach Files",
+      "BanMembers": "Ban Members",
+      "ChangeNickname": "Change Nickname",
+      "Connect": "Connect",
+      "CreateInstantInvite": "Create Invite",
+      "CreatePrivateThreads": "Create Private Threads",
+      "CreatePublicThreads": "Create Public Threads",
+      "DeafenMembers": "Deafen Members",
+      "EmbedLinks": "Embed Links",
+      "KickMembers": "Kick Members",
+      "ManageChannels": "Manage Channel(s)",
+      "ManageEmojisAndStickers": "Manage Emoji and Stickers",
+      "ManageEvents": "Manage Events",
+      "ManageGuild": "Manage Server",
+      "ManageMessages": "Manage Messages",
+      "ManageNicknames": "Manage Nicknames",
+      "ManageRoles": "Manage Roles / Permissions",
+      "ManageThreads": "Manage Threads / Posts",
+      "ManageWebhooks": "Manage Webhooks",
+      "MentionEveryone": "Mention Everyone, Here, and All Roles",
+      "ModerateMembers": "Timeout Members",
+      "MoveMembers": "Move Members",
+      "MuteMembers": "Mute Members",
+      "PrioritySpeaker": "Priority Speaker",
+      "ReadMessageHistory": "Read Message History",
+      "RequestToSpeak": "Request to Speak",
+      "SendMessages": "Send Messages / Create Posts",
+      "SendMessagesInThreads": "Send Messages in Threads / Posts",
+      "SendTTSMessages": "Send Text-to-Speech Messages",
+      "Speak": "Speak",
+      "Stream": "Video",
+      "UseApplicationCommands": "Use Application Commands",
+      "UseEmbeddedActivities": "Use Activities",
+      "UseExternalEmojis": "Use External Emoji",
+      "UseExternalStickers": "Use External Stickers",
+      "UseVAD": "Use Voice Activity",
+      "ViewAuditLog": "View Audit Log",
+      "ViewChannel": "View Channel(s)",
+      "ViewGuildInsights": "View Server Insights"
+    },
+    "yesNo": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "boolean": {
+      "true": "True",
+      "false": "False"
+    },
+    "other": {
+      "na": "N/A"
+    }
+  }
+}
