@@ -56,6 +56,11 @@ function send_notification ()
 
 function zero_service ()
 {
+  echo "Initiating shutdown..."
+  echo "Sending save command to server..."
+  /usr/local/bin/rcon -a $RCON_ADDRESS:$RCON_PORT -p $RCON_PASSWORD "Save"
+  sleep 60
+  echo "Sending shutdown notification..."
   send_notification shutdown
   echo Setting desired task count to zero.
   aws ecs update-service --cluster $CLUSTER --service $SERVICE --desired-count 0
