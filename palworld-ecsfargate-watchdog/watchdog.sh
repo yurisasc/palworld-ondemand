@@ -109,10 +109,18 @@ aws route53 change-resource-record-sets --hosted-zone-id $DNSZONE --change-batch
 
 ## Check for RCON readiness
 echo "Checking for RCON readiness..."
-if ! /usr/local/bin/rcon -a $RCON_ADDRESS:$RCON_PORT -p $RCON_PASSWORD "info"; then
-    echo "Failed to connect to RCON. Exiting."
-    exit 1
-fi
+RETRY_COUNT=0
+MAX_RETRIES=30 # Maximum number of retries (e.g., 5 minutes with 10-second intervals)
+RETRY_INTERVAL=10 # Time in seconds to wait between retries
+while ! /usr/local/bin/rcon -a $RCON_ADDRESS:$RCON_PORT -p $RCON_PASSWORD "info"; do
+    echo "Failed to connect to RCON. Retrying in $RETRY_INTERVAL seconds..."
+    sleep $RETRY_INTERVAL
+    RETRY_COUNT=$((RETRY_COUNT + 1))
+    if [ $RETRY_COUNT -ge $MAX_RETRIES ]; then
+        echo "Failed to connect to RCON after $MAX_RETRIES retries. Exiting."
+        exit 1
+    fi
+done
 
 echo "RCON is ready. Proceeding with server monitoring."
 
