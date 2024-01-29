@@ -42,7 +42,7 @@ jobs:
           context: ./discord-bot
           push: true
           platforms: linux/arm64
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mc-discord-bot:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ondemand-server-discord-bot:latest
       - name: Logout of Docker Hub
         run: |
           docker logout
