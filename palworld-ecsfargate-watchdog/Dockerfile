@@ -1,7 +1,7 @@
 FROM amazon/aws-cli
 
 # Install dependencies
-RUN yum install -y net-tools jq nmap-ncat && \
+RUN yum install -y net-tools jq nmap-ncat tar && \
     yum clean all
 
 # Download and install rcon-cli
