@@ -109,7 +109,7 @@ aws route53 change-resource-record-sets --hosted-zone-id $DNSZONE --change-batch
 
 ## Check for RCON readiness
 echo "Checking for RCON readiness..."
-if ! /usr/bin/rcon-cli -a $RCON_ADDRESS:$RCON_PORT -p $RCON_PASSWORD "info"; then
+if ! /usr/local/bin/rcon -a $RCON_ADDRESS:$RCON_PORT -p $RCON_PASSWORD "info"; then
     echo "Failed to connect to RCON. Exiting."
     exit 1
 fi
@@ -126,7 +126,7 @@ do
   # Run the RCON command to show players and count the number of lines
   # Assumes each player is listed on a new line in the RCON output
   echo "Checking for players, minute $COUNTER out of $STARTUPMIN..."
-  PLAYER_COUNT=$(/usr/bin/rcon-cli -a $PUBLICIP:$RCON_PORT -p $RCON_PASSWORD "ShowPlayers" | wc -l)
+  PLAYER_COUNT=$(/usr/local/bin/rcon -a $PUBLICIP:$RCON_PORT -p $RCON_PASSWORD "ShowPlayers" | wc -l)
   # Subtract 1 from the count to account for the header line in the output
   PLAYER_COUNT=$((PLAYER_COUNT - 1))
   
@@ -151,7 +151,7 @@ do
   # Run the RCON command to show players and count the number of lines
   # Assumes each player is listed on a new line in the RCON output
   echo "Checking for players, minute $COUNTER out of $STARTUPMIN..."
-  PLAYER_COUNT=$(/usr/bin/rcon-cli -a $PUBLICIP:$RCON_PORT -p $RCON_PASSWORD "ShowPlayers" | wc -l)
+  PLAYER_COUNT=$(/usr/local/bin/rcon -a $PUBLICIP:$RCON_PORT -p $RCON_PASSWORD "ShowPlayers" | wc -l)
   # Subtract 1 from the count to account for the header line in the output
   PLAYER_COUNT=$((PLAYER_COUNT - 1))
   
