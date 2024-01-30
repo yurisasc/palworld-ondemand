@@ -272,6 +272,7 @@ export class PalworldStack extends Stack {
           DISCORDWEBHOOKS: config.discord.webhookUrls,
           STARTUPMIN: config.startupMinutes,
           SHUTDOWNMIN: config.shutdownMinutes,
+          SERVER_PORT: `${palwordServerConfig.server.port}`,
           RCON_PORT: `${palwordServerConfig.rcon.port}`,
           RCON_PASSWORD: palwordServerConfig.rcon.password,
         },

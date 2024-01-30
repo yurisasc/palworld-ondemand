@@ -8,6 +8,7 @@
 [ -n "$DNSZONE" ] || { echo "DNSZONE env variable must be set to the Route53 Hosted Zone ID" ; exit 1; }
 [ -n "$STARTUPMIN" ] || { echo "STARTUPMIN env variable not set, defaulting to a 10 minute startup wait" ; STARTUPMIN=10; }
 [ -n "$SHUTDOWNMIN" ] || { echo "SHUTDOWNMIN env variable not set, defaulting to a 20 minute shutdown wait" ; SHUTDOWNMIN=20; }
+[ -n "$SERVER_PORT" ] || { echo "SERVER_PORT env variable must be set to the server port" ; exit 1; }
 [ -n "$RCON_PORT" ] || { echo "RCON_PORT env variable must be set to the RCON server port" ; exit 1; }
 [ -n "$RCON_PASSWORD" ] || { echo "RCON_PASSWORD env variable must be set" ; exit 1; }
 
@@ -18,7 +19,7 @@ function send_notification ()
     \"embeds\": [
       {
         \"title\": \"🟢 Server Started!\",
-        \"description\": \"Server IP: \`$SERVERNAME\`\n\n⚠️ The server will be shut down if there is no activity in the next $STARTUPMIN minutes.\n\n👌 If you forgot to stop the server after playing, we will shut it down after $SHUTDOWNMIN minutes of the last activity to save up costs.\n\nAll progress will automatically be saved 👍\",
+        \"description\": \"Server IP: \`$SERVERNAME\` or \`$2:$SERVER_PORT\`\n\n⚠️ The server will be shut down if there is no activity in the next $STARTUPMIN minutes.\n\n👌 If you forgot to stop the server after playing, we will shut it down after $SHUTDOWNMIN minutes of the last activity to save up costs.\n\nAll progress will automatically be saved 👍\",
         \"color\": null
       }
     ],
@@ -133,7 +134,7 @@ done
 echo "RCON is ready. Proceeding with server monitoring."
 
 ## Send startup notification message
-send_notification startup
+send_notification startup $PUBLICIP
 
 echo "Checking every 1 minute for active players, up to $STARTUPMIN minutes..."
 COUNTER=0
