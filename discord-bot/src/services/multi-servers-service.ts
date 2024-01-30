@@ -37,7 +37,7 @@ export class MultiServersService {
       const saveResult = await this.rconService.sendCommand("Save");
 
       // Delay to allow the server to save
-      await new Promise((resolve) => setTimeout(resolve, 15000));
+      await new Promise((resolve) => setTimeout(resolve, 60000));
       console.log("SaveResult:", saveResult);
 
       const shutdownResult = await this.rconService.sendCommand(
