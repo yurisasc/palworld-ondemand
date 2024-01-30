@@ -60,7 +60,7 @@ function zero_service ()
   echo "Initiating shutdown..."
   echo "Sending save command to server..."
   /usr/local/bin/rcon -a $RCON_ADDRESS:$RCON_PORT -p $RCON_PASSWORD "Save"
-  sleep 30
+  sleep 60
   echo "Sending shutdown command to server..."
   /usr/local/bin/rcon -a $RCON_ADDRESS:$RCON_PORT -p $RCON_PASSWORD "Shutdown 1 Shutdown initiated by watchdog"
   sleep 30
