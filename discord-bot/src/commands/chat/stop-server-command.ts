@@ -32,11 +32,22 @@ export class StopServerCommand implements Command {
       if (args.option) {
         try {
           // TODO: Check that the server is running before stopping it
-          await this.multiServersService.stopServerByName(args.option);
-          embed = Lang.getEmbed("displayEmbeds.stopServer", data.lang, {
+          // Saving the game and shutting down the server gracefully.
+          embed = Lang.getEmbed("displayEmbeds.stoppingServer", data.lang, {
             SERVER_NAME: args.option,
           });
+          await InteractionUtils.send(intr, embed);
+          await this.multiServersService.saveGameAndShutdownByName(args.option);
+
+          // Stopping the server instance
+          await this.multiServersService.stopServerByName(args.option);
+          embed = Lang.getEmbed("displayEmbeds.stoppedServer", data.lang, {
+            SERVER_NAME: args.option,
+          });
+          await InteractionUtils.send(intr, embed);
+          return;
         } catch (error) {
+          console.log(error);
           embed = Lang.getEmbed("displayEmbeds.invalidServerName", data.lang, {
             SERVER_NAME: args.option,
           });

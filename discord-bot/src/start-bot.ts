@@ -27,6 +27,7 @@ import {
   MultiServersService,
   getServerNames,
 } from "./services/multi-servers-service.js";
+import { RconService } from "./services/rcon-service.js";
 
 const require = createRequire(import.meta.url);
 let Config = require("../config/config.json");
@@ -36,7 +37,8 @@ async function start(): Promise<void> {
   // Services
   let eventDataService = new EventDataService();
   let awsService = new AWSService();
-  let multiServersService = new MultiServersService(awsService);
+  let rconService = new RconService();
+  let multiServersService = new MultiServersService(awsService, rconService);
 
   // Client
   let client = new CustomClient({

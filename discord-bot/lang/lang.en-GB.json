@@ -5,9 +5,13 @@
         "title": "🟡 Starting {{SERVER_NAME}}...",
         "description": "Please wait while the server starts. It may take up to 10 minutes."
       },
-      "stopServer": {
+      "stoppingServer": {
         "title": "🟡 Stopping {{SERVER_NAME}}...",
         "description": "We will save your progress before stopping the server."
+      },
+      "stoppedServer": {
+        "title": "🔴 Server stopped",
+        "description": "Hope you had fun and don't forget to touch real grass 🌿"
       },
       "invalidServerName": {
         "title": "❌ Invalid server",
