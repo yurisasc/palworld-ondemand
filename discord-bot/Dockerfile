@@ -1,5 +1,4 @@
-# Using ARM64 so it can run on Raspberry Pi
-FROM arm64v8/node:16
+FROM node:16
 
 # Create app directory
 WORKDIR /app
