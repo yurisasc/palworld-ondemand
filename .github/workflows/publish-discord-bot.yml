@@ -13,31 +13,36 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Re-register commands
         working-directory: ./discord-bot
         env:
           CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
           CLIENT_TOKEN: ${{ secrets.DISCORD_CLIENT_TOKEN }}
+          SERVERS_CONFIG: ${{ secrets.SERVERS_CONFIG }}
+          CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
+          SERVICE_NAME: ${{ secrets.SERVICE_NAME }}
+          RCON_PORT: ${{ secrets.RCON_PORT }}
+          RCON_PASSWORD: ${{ secrets.RCON_PASSWORD }}
         run: |
           npm install
           npm run commands:clear
           npm run commands:register
-      
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
         with:
           platforms: all
-      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      
+
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
@@ -45,7 +50,7 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/palworld-discord-bot:latest
-      
+
       - name: Logout of Docker Hub
         run: |
           docker logout
